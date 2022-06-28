@@ -1,0 +1,36 @@
+<?php
+
+/** @var \Unit1\SimpleForm\Block\SimpleForm $block */
+$form = $block->getAllDetails();
+?>
+<h2>Details</h2>
+<form  method="POST" action="<?php echo $block->getIndexUrl() ?>" >
+    <button style="background-color: #e3dada;">Add New Details</button>
+</form>
+<div class="brand-listing">
+
+    <?php if (count($form) > 0): ?>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th><?php echo __('FirstName') ?></th>
+                <th><?php echo __('LastName') ?></th>
+                <th><?php echo __('Number') ?></th>
+                <th><?php echo __('Email') ?></th>
+            </tr>
+            <?php foreach ($block->getAllDetails() as $form): ?>
+                <tr>
+                    <td><?php echo $form->getEntityid() ?></td>
+                    <td><?php echo $form->getFirstname() ?></td>
+                    <td><?php echo $form->getLastname() ?></td>
+                    <td><?php echo $form->getNumber() ?></td>
+                    <td><?php echo $form->getEmail() ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </thead>
+        </table>
+    <?php else: ?>
+        <h3>No Details are available</h3>
+    <?php endif; ?>
+</div>
