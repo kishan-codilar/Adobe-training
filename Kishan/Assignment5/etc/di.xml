@@ -1,0 +1,17 @@
+<!--
+/**
+ *
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Magento\Checkout\Controller\Cart\CouponPost" type="Kishan\Assignment5\Controller\Cart\CouponPost"/>
+
+    <type name="Magento\Checkout\Controller\Cart\CouponPost">
+        <plugin name="couponError" type="Kishan\Assignment5\Plugin\CouponError" sortOrder="1" disabled="false" />
+    </type>
+
+</config>
