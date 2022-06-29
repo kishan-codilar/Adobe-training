@@ -4,39 +4,33 @@ namespace Unit1\SimpleForm\Block;
 
 use Magento\Framework\View\Element\Template;
 use Unit1\SimpleForm\Model\ResourceModel\Form\CollectionFactory;
-use Unit1\SimpleForm\Model\Custom;
+use Unit1\SimpleForm\Api\SimpleFormInterface;
 
-class SimpleForm extends Template
+class SimpleForm extends Template implements SimpleFormInterface
 {
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
-
-    /**
-     * @var Custom
-     */
-    protected $custom;
+    protected CollectionFactory $collectionFactory;
 
     /**
      * SimpleForm constructor.
      * @param Template\Context $context
      * @param CollectionFactory $collectionFactory
-     * @param Custom $custom
      * @param array $data
      */
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
-        Custom $custom,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;
-        $this->custom = $custom;
     }
 
     /**
+     * * return string
+     *
      * @return string
      */
     public function getIndexUrl()
@@ -45,6 +39,8 @@ class SimpleForm extends Template
     }
 
     /**
+     * * return string
+     *
      * @return string
      */
     public function getAddUrl()
@@ -53,19 +49,13 @@ class SimpleForm extends Template
     }
 
     /**
+     * * return \Magento\Framework\DataObject[]
+     *
      * @return \Magento\Framework\DataObject[]
      */
     public function getAllDetails()
     {
         $collection = $this->collectionFactory->create();
         return $collection->getItems();
-    }
-
-    /**
-     * @return Custom
-     */
-    public function getCustom()
-    {
-        return $this->custom;
     }
 }
