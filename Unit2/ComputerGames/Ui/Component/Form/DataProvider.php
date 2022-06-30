@@ -13,6 +13,7 @@ use Magento\Ui\DataProvider\Modifier\PoolInterface;
 
 /**
  * Class DataProvider
+ * DataProvider extends AbstractDataProvider
  */
 class DataProvider extends AbstractDataProvider
 {
@@ -24,19 +25,22 @@ class DataProvider extends AbstractDataProvider
     /**
      * @var Config
      */
-    protected $eavConfig;
+    protected Config $eavConfig;
 
     /**
      * @var FilterPool
      */
-    protected $filterPool;
+    protected FilterPool $filterPool;
 
     /**
      * @var array
      */
-    protected $loadedData;
+    protected array $loadedData;
 
-    protected $pool;
+    /**
+     * @var PoolInterface
+     */
+    protected PoolInterface $pool;
 
     /**
      * DataProvider constructor.
@@ -49,6 +53,7 @@ class DataProvider extends AbstractDataProvider
      * @param PoolInterface $pool
      * @param array $meta
      * @param array $data
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
         $name,
@@ -68,11 +73,11 @@ class DataProvider extends AbstractDataProvider
     }
 
     /**
-     * prepareMeta
+     * PrepareMeta
      *
-     * @param  mixed $meta
-     *
-     * @return void
+     * @param mixed $meta
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function prepareMeta(array $meta)
     {
@@ -85,9 +90,10 @@ class DataProvider extends AbstractDataProvider
     }
 
     /**
-     * getData
+     * GetData
      *
-     * @return void
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getData()
     {

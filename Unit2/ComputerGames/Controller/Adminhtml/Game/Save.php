@@ -5,6 +5,7 @@
  */
 
 namespace Unit2\ComputerGames\Controller\Adminhtml\Game;
+
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Unit2\ComputerGames\Model\GameFactory;
@@ -14,7 +15,7 @@ use Magento\Eav\Model\Config;
 
 /**
  * Class Save
- * @package Unit2\ComputerGames\Controller\Adminhtml\Game
+ * Save extends Action
  */
 class Save extends Action
 {
@@ -28,12 +29,30 @@ class Save extends Action
      */
     protected $resultRedirectFactory;
 
+    /**
+     * @var ImageUploader
+     */
     protected $imageUploader;
 
+    /**
+     * @var StoreManagerInterface
+     */
     protected $storeManager;
 
+    /**
+     * @var Config
+     */
     protected $eavConfig;
 
+    /**
+     * Save constructor.
+     * @param Action\Context $context
+     * @param GameFactory $gameFactory
+     * @param RedirectFactory $redirectFactory
+     * @param ImageUploader $imageUploader
+     * @param StoreManagerInterface $storeManager
+     * @param Config $eavConfig
+     */
     public function __construct(
         Action\Context $context,
         GameFactory $gameFactory,
@@ -41,8 +60,7 @@ class Save extends Action
         ImageUploader $imageUploader,
         StoreManagerInterface $storeManager,
         Config $eavConfig
-    )
-    {
+    ) {
         $this->gameFactory = $gameFactory->create();
         $this->resultRedirectFactory = $redirectFactory;
         $this->imageUploader = $imageUploader;
@@ -52,9 +70,9 @@ class Save extends Action
     }
 
     /**
-     * execute
+     * Execute
      *
-     * @return void
+     * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
@@ -64,7 +82,7 @@ class Save extends Action
         if (isset($postData['game_id'])) {
             $gameId = (int)$postData['game_id'];
         }
-        
+
         $this->gameFactory->setName($postData['name'])
             ->setReleaseDate($postData['release_date'])
             ->setType($postData['type'])
@@ -105,11 +123,12 @@ class Save extends Action
     }
 
     /**
+     * * return bool
+     *
      * @return bool
      */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Unit2_ComputerGames::grid');
-
     }
 }

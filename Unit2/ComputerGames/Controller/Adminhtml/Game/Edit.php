@@ -4,13 +4,14 @@
  * See COPYING.txt for license details.
  */
 namespace Unit2\ComputerGames\Controller\Adminhtml\Game;
+
 use Magento\Backend\App\Action;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class Edit
- * @package Unit2\ComputerGames\Controller\Adminhtml\Game
+ * Edit extends Action
  */
 class Edit extends Action
 {
@@ -26,20 +27,23 @@ class Edit extends Action
     /**
      * __construct
      *
-     * @return void
+     * @param PageFactory $resultPageFactory
+     * @param Registry $coreRegistry
+     * @param Action\Context $context
      */
     public function __construct(
         PageFactory $resultPageFactory,
         Registry $coreRegistry,
         Action\Context $context
-    )
-    {
+    ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->coreRegistry = $coreRegistry;
         parent::__construct($context);
     }
 
     /**
+     * * execute
+     *
      * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
@@ -55,7 +59,7 @@ class Edit extends Action
     /**
      * _isAllowed
      *
-     * @return void
+     * @return bool
      */
     protected function _isAllowed()
     {

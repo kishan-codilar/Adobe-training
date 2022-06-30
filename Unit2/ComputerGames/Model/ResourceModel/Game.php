@@ -7,12 +7,12 @@ namespace Unit2\ComputerGames\Model\ResourceModel;
 
 /**
  * Class Game
- * @package Unit2\ComputerGames\Model\ResourceModel
+ * Game extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
  */
 class Game extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
-     * Constructor
+     * Construct
      */
     protected function _construct()
     {

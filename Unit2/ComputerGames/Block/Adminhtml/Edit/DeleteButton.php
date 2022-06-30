@@ -9,11 +9,13 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class DeleteButton
- * @package Magento\Customer\Block\Adminhtml\Edit
+ * DeleteButton extends GenericButton implements ButtonProviderInterface
  */
 class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
     /**
+     * * return array
+     *
      * @return array
      */
     public function getButtonData()
@@ -29,6 +31,8 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
     }
 
     /**
+     * * return string
+     *
      * @return string
      */
     public function getDeleteUrl()

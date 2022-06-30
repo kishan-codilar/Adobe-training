@@ -11,7 +11,7 @@ use Unit2\ComputerGames\Model\GameFactory;
 
 /**
  * Class Delete
- * @package Unit2\ComputerGames\Controller\Adminhtml\Game
+ * Delete extends Action
  */
 class Delete extends Action
 {
@@ -42,9 +42,9 @@ class Delete extends Action
     }
 
     /**
-     * execute
+     * Execute
      *
-     * @return void
+     * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
@@ -63,7 +63,7 @@ class Delete extends Action
     /**
      * _isAllowed
      *
-     * @return void
+     * @return bool
      */
     protected function _isAllowed()
     {

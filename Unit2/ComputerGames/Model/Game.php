@@ -9,7 +9,7 @@ use Unit2\ComputerGames\Model\ResourceModel\Game as GameResourceModel;
 
 /**
  * Class Game
- * @package Unit2\ComputerGames\Model
+ * Game extends \Magento\Framework\Model\AbstractExtensibleModel
  */
 class Game extends \Magento\Framework\Model\AbstractExtensibleModel
 {
@@ -24,6 +24,8 @@ class Game extends \Magento\Framework\Model\AbstractExtensibleModel
     }
 
     /**
+     * * return array
+     *
      * @return array
      */
     public function getCustomAttributesCodes()

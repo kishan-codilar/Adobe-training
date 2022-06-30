@@ -13,16 +13,25 @@ use \Magento\Store\Model\StoreManagerInterface;
 
 class Image extends Column
 {
-    protected $storeManager;
+    /**
+     * @var StoreManagerInterface
+     */
+    protected StoreManagerInterface $storeManager;
 
-    protected $imageUploader;
-
-    protected $urlBuilder;
+    /**
+     * @var Uploader
+     */
+    protected Uploader $imageUploader;
 
     /**
      * __construct
      *
-     * @return void
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param Uploader $imageUploader
+     * @param StoreManagerInterface $storeManager
+     * @param array $components
+     * @param array $data
      */
     public function __construct(
         ContextInterface $context,
@@ -38,19 +47,20 @@ class Image extends Column
     }
 
     /**
-     * prepareDataSource
+     * PrepareDataSource
      *
-     * @param  mixed $dataSource
-     *
+     * @param mixed $dataSource
      * @return void
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function prepareDataSource(array $dataSource)
     {
         $fieldName = $this->getData('name');
         foreach ($dataSource['data']['items'] as & $item) {
             $url = $this->storeManager->getStore()->getBaseUrl(
-                    \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-                ) . $this->imageUploader->getFilePath(
+                \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
+            )
+                . $this->imageUploader->getFilePath(
                     $this->imageUploader->getBasePath(),
                     $item['image']
                 );

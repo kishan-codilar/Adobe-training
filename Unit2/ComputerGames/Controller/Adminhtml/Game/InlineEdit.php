@@ -10,7 +10,7 @@ use Unit2\ComputerGames\Model\Game;
 
 /**
  * Class InlineEdit
- * @package Unit2\ComputerGames\Controller\Adminhtml\Game
+ * InlineEdit extends \Magento\Backend\App\Action
  */
 class InlineEdit extends \Magento\Backend\App\Action
 {
@@ -19,7 +19,7 @@ class InlineEdit extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Unit2_ComputerGames::grid';
+    public const ADMIN_RESOURCE = 'Unit2_ComputerGames::grid';
 
     /**
      * @var Game
@@ -40,6 +40,7 @@ class InlineEdit extends \Magento\Backend\App\Action
      * @param Action\Context $context
      * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
      * @param \Psr\Log\LoggerInterface $logger
+     * @param Game $game
      */
     public function __construct(
         Action\Context $context,

@@ -7,19 +7,19 @@ namespace Unit2\ComputerGames\Block\Adminhtml\Edit;
 
 /**
  * Class GenericButton
- * @package Magento\Customer\Block\Adminhtml\Edit
+ * Magento\Customer\Block\Adminhtml\Edit
  */
 class GenericButton
 {
     /**
-     * Url Builder
+     * * Magento\Framework\UrlInterface
      *
      * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
 
     /**
-     * Registry
+     * * Magento\Framework\Registry
      *
      * @var \Magento\Framework\Registry
      */
@@ -30,12 +30,13 @@ class GenericButton
      * @var \Magento\Framework\App\Request\Http
      */
     protected $request;
-    
+
     /**
      * Constructor
      *
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
+     * @param  \Magento\Framework\App\Request\Http $request
      */
     public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
@@ -46,7 +47,6 @@ class GenericButton
         $this->registry = $registry;
         $this->request  = $request;
     }
-
 
     /**
      * Return the customer Id.
@@ -59,7 +59,7 @@ class GenericButton
     }
 
     /**
-     * getUrl
+     * * etUrl
      *
      * @param  mixed $route
      * @param  mixed $params

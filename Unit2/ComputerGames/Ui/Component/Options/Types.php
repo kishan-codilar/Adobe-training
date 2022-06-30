@@ -5,6 +5,10 @@
  */
 namespace Unit2\ComputerGames\Ui\Component\Options;
 
+/**
+ * Class Types
+ * Types implements \Magento\Framework\Data\OptionSourceInterface
+ */
 class Types implements \Magento\Framework\Data\OptionSourceInterface
 {
     const TYPE_OPTIONS = [

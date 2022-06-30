@@ -5,16 +5,17 @@
  */
 
 namespace Unit2\ComputerGames\Controller\Adminhtml\Game;
+
 use Magento\Backend\App\Action;
 
 /**
  * Class Validate
- * @package Unit2\ComputerGames\Controller\Adminhtml\Game
+ * Validate extends Action
  */
 class Validate extends Action
 {
     /**
-     * execute
+     * Execute
      *
      * @return void
      */
@@ -25,11 +26,12 @@ class Validate extends Action
     }
 
     /**
+     * * return bool
+     *
      * @return bool
      */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Unit2_ComputerGames::grid');
-
     }
 }

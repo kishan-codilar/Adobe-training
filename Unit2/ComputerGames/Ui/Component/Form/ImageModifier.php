@@ -11,10 +11,21 @@ use \Magento\Catalog\Model\ImageUploader;
 
 class ImageModifier implements ModifierInterface
 {
-    protected $storeManager;
+    /**
+     * @var StoreManagerInterface
+     */
+    protected StoreManagerInterface $storeManager;
 
-    protected $imageUploader;
+    /**
+     * @var ImageUploader
+     */
+    protected ImageUploader $imageUploader;
 
+    /**
+     * ImageModifier constructor.
+     * @param StoreManagerInterface $storeManager
+     * @param ImageUploader $imageUploader
+     */
     public function __construct(
         StoreManagerInterface $storeManager,
         ImageUploader $imageUploader
@@ -23,6 +34,8 @@ class ImageModifier implements ModifierInterface
         $this->imageUploader = $imageUploader;
     }
     /**
+     * * return array
+     *
      * @param array $meta
      * @return array
      */
@@ -32,11 +45,11 @@ class ImageModifier implements ModifierInterface
     }
 
     /**
-     * modifyData
+     * ModifyData
      *
-     * @param  mixed $data
-     *
+     * @param mixed $data
      * @return void
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function modifyData(array $data)
     {
@@ -47,7 +60,8 @@ class ImageModifier implements ModifierInterface
                 $arrayImageData[0]['name'] = 'Image';
                 $arrayImageData[0]['url'] = $this->storeManager->getStore()->getBaseUrl(
                     \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-                    ) . $this->imageUploader->getFilePath(
+                )
+                    . $this->imageUploader->getFilePath(
                         $this->imageUploader->getBasePath(),
                         $image->getImage()
                     );

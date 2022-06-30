@@ -11,18 +11,21 @@ use Magento\Catalog\Model\ImageUploader;
 
 class Save extends Action
 {
+    /**
+     * @var ImageUploader
+     */
     protected $imageUploader;
 
     /**
      * __construct
      *
-     * @return void
+     * @param Action\Context $context
+     * @param ImageUploader $imageUploader
      */
     public function __construct(
         Action\Context $context,
         ImageUploader $imageUploader
-    )
-    {
+    ) {
         parent::__construct($context);
         $this->imageUploader = $imageUploader;
     }
@@ -38,7 +41,7 @@ class Save extends Action
     }
 
     /**
-     * execute
+     * Execute
      *
      * @return void
      */

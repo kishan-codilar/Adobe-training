@@ -4,6 +4,7 @@
  * See COPYING.txt for license details.
  */
 namespace Unit2\ComputerGames\Ui\Component\Listing\Column;
+
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -21,17 +22,17 @@ class GameActions extends Column
     /**
      * @var UrlBuilder
      */
-    protected $actionUrlBuilder;
+    protected UrlBuilder $actionUrlBuilder;
 
     /**
      * @var UrlInterface
      */
-    protected $urlBuilder;
+    protected UrlInterface $urlBuilder;
 
     /**
      * @var string
      */
-    private $editUrl;
+    private string $editUrl;
 
     /**
      * @param ContextInterface $context
@@ -74,7 +75,7 @@ class GameActions extends Column
                         'label' => __('Edit')
                     ];
                     $item[$name]['delete'] = [
-                        'href' => $this->urlBuilder->getUrl(self::GAME_URL_PATH_DELETE, ['game_id' => $item['game_id']]),
+                        'href' =>$this->urlBuilder->getUrl(self::GAME_URL_PATH_DELETE, ['game_id' => $item['game_id']]),
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete ${ $.$data.name }'),

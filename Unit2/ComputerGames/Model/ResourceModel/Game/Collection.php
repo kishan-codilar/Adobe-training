@@ -4,16 +4,18 @@
  * See COPYING.txt for license details.
  */
 namespace Unit2\ComputerGames\Model\ResourceModel\Game;
+
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Unit2\ComputerGames\Model\Game as Model;
 use Unit2\ComputerGames\Model\ResourceModel\Game as ResourceModel;
 use Magento\Framework\Api\Search\SearchResultInterface;
 
 /**
  * Class Collection
- * @package Unit2\ComputerGames\Model\ResourceModel\Game
+ * Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+   implements SearchResultInterface
  */
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
-    implements SearchResultInterface
+class Collection extends AbstractCollection implements SearchResultInterface
 {
     /**
      * Constructor
@@ -24,6 +26,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     }
 
     /**
+     * * return AggregationInterface
+     *
      * @return AggregationInterface
      */
     public function getAggregations()
@@ -32,6 +36,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     }
 
     /**
+     * * setAggregations
+     *
      * @param AggregationInterface $aggregations
      * @return $this
      */
@@ -94,5 +100,4 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         return $this;
     }
-
 }
