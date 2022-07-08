@@ -3,6 +3,7 @@
 namespace Kishan\Assignment6\Api;
 
 use Kishan\Assignment6\Model\Form;
+use Kishan\Assignment6\Model\ResourceModel\Form\Collection;
 
 interface FormRepositoryInterface
 {
@@ -18,7 +19,9 @@ interface FormRepositoryInterface
     /**
      * GetCollection
      *
-     * @return mixed
+     * @return array
      */
     public function getCollection();
+
+    public function getDataById($id);
 }

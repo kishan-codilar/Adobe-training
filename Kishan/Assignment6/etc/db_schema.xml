@@ -9,8 +9,6 @@
         <column xsi:type="varchar" name="lastname" nullable="false" length="255" comment="last Name"/>
         <column xsi:type="date" name="dob" nullable="false" comment="Date of birth"/>
         <column xsi:type="varchar" name="number" nullable="false" length="255" comment=" Mobile number"/>
-        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Email ID"/>
-        <column xsi:type="text" name="address" nullable="false" comment="Address"/>
         <column xsi:type="float" name="weight" nullable="false" comment="Weight" />
         <column xsi:type="decimal" name="price" nullable="true" scale="1" precision="2" comment="price"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
@@ -21,4 +19,22 @@
             <column name="entity_id"/>
         </constraint>
     </table>
+    <table name="kishan_assignment" resource="default" engine="innodb" comment="Personal stored here">
+        <column xsi:type="int" name="id" unsigned="false" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="int" name="address_id" unsigned="false" nullable="false" default="0"
+                comment="Address ID"/>
+        <column xsi:type="text" name="permanent_address" nullable="false" comment="Permanent Address"/>
+        <column xsi:type="text" name="temporary_address" nullable="false" comment="Temporary Address"/>
+
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="KISHAN_ASSIGNMENT_ADDRESS_ID_KISHANDB_ENTITY_ID" table="kishan_assignment" column="address_id" referenceTable="kishandb" referenceColumn="entity_id"/>
+    </table>
 </schema>
+

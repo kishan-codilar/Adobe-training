@@ -40,16 +40,16 @@ class FormRepositoryModel implements FormRepositoryInterface
     /**
      * Return Model
      *
-     * @param int $Id
+     * @param $entity_id
      * @return Model
      * @throws NoSuchEntityException
      */
-    public function getById($Id)
+    public function getById($entity_id)
     {
         $model = $this->modelFactory->create();
-        $model->load($Id);
+        $model->load($entity_id);
         if (!$model->getId()) {
-            throw new NoSuchEntityException(__('Id %1 does not exist', $Id));
+            throw new NoSuchEntityException(__('Id %1 does not exist', $entity_id));
         }
         return $model->getData();
     }
@@ -63,5 +63,15 @@ class FormRepositoryModel implements FormRepositoryInterface
     {
         $collection = $this->collectionFactory->create();
         return $collection->getData();
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getDataById($id)
+    {
+        $list = $this->getCollection()->addFieldToFilter('entity_id', ['in'=>$id]);
+        return $list->getData();
     }
 }

@@ -7,6 +7,8 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Kishan\Assignment6\Api\FormRepositoryInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\TestFramework\Exception\NoSuchActionException;
 
 class Index extends Action
 {
@@ -45,7 +47,12 @@ class Index extends Action
     public function execute()
     {
         $resultJson = $this->resultJsonFactory->create();
-        $formData = $this->formRepositoryInterface->getById('1');
-        return $resultJson->setData(['success'=>true,'data'=>$formData]);
+        try {
+            $formData = $this->formRepositoryInterface->getCollection();
+
+            return $resultJson->setData(['success'=>true,'data'=>$formData]);
+        } catch (NoSuchEntityException $e) {
+            return $resultJson->setData([$e->getMessage()]);
+        }
     }
 }

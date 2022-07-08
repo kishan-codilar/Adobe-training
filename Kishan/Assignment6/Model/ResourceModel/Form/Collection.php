@@ -15,4 +15,19 @@ class Collection extends AbstractCollection
     {
         $this->_init(Model::class, ResourceModel::class);
     }
+
+    /**
+     * @return $this|Collection|void
+     */
+    protected function _initSelect()
+    {
+        $this->getSelect()
+            ->from(['main_table' => $this->getMainTable()])
+            ->join(
+                'kishan_assignment',
+                'main_table.entity_id = kishan_assignment.address_id',
+                array('*')
+            );
+        return $this;
+    }
 }
