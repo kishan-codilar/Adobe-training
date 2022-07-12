@@ -23,11 +23,14 @@ class Collection extends AbstractCollection
     {
         $this->getSelect()
             ->from(['main_table' => $this->getMainTable()])
-            ->join(
+            ->joinInner(
                 'kishan_assignment',
                 'main_table.entity_id = kishan_assignment.address_id',
                 array('*')
             );
+        echo '<pre>';
+       var_dump($this->getData());die();
+
         return $this;
     }
 }

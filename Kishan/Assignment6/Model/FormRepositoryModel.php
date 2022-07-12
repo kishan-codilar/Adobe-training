@@ -6,9 +6,11 @@ use Kishan\Assignment6\Api\FormRepositoryInterface;
 use Kishan\Assignment6\Model\Form as Model;
 use Kishan\Assignment6\Model\FormFactory as ModelFactory;
 use Kishan\Assignment6\Model\ResourceModel\Form as ResourceModel;
+use Kishan\Assignment6\Api\Data\FormInterface;
 use Kishan\Assignment6\Model\ResourceModel\Form\Collection;
 use Kishan\Assignment6\Model\ResourceModel\Form\CollectionFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Kishan\Assignment6\Api\Data\FormExtensionFactory;
 
 class FormRepositoryModel implements FormRepositoryInterface
 {
@@ -26,15 +28,28 @@ class FormRepositoryModel implements FormRepositoryInterface
      * @var CollectionFactory
      */
     private $collectionFactory;
+    /**
+     * @var FormInterface
+     */
+    private $formInterface;
+
+    /**
+     * Order Extension Attributes Factory
+     *
+     * @var FormExtensionFactory
+     */
+    protected $extensionFactory;
 
     public function __construct(
         CollectionFactory $collectionFactory,
         ModelFactory $modelFactory,
-        ResourceModel $resourceModel
+        ResourceModel $resourceModel,
+        FormInterface $formInterface
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
         $this->collectionFactory = $collectionFactory;
+        $this->formInterface = $formInterface;
     }
 
     /**
@@ -48,9 +63,14 @@ class FormRepositoryModel implements FormRepositoryInterface
     {
         $model = $this->modelFactory->create();
         $model->load($entity_id);
-        if (!$model->getId()) {
-            throw new NoSuchEntityException(__('Id %1 does not exist', $entity_id));
+        if ($this->formInterface->getExtensionAttributes()) {
+            return $model;
         }
+//         if (!$model->getId()) {
+//            throw new NoSuchEntityException(__('Id %1 does not exist', $entity_id));
+//        }
+
+
         return $model->getData();
     }
 

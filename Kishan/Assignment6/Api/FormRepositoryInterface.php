@@ -23,5 +23,9 @@ interface FormRepositoryInterface
      */
     public function getCollection();
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getDataById($id);
 }

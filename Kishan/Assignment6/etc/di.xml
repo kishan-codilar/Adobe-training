@@ -1,3 +1,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Kishan\Assignment6\Api\FormRepositoryInterface" type="Kishan\Assignment6\Model\FormRepositoryModel" />
+    <preference for="Kishan\Assignment6\Api\AddressRepositoryInterface" type="Kishan\Assignment6\Model\AddressRepositoryModel" />
+    <preference for="Kishan\Assignment6\Api\Data\FormInterface" type="Kishan\Assignment6\Model\Form" />
 </config>

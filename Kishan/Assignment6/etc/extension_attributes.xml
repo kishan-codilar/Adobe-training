@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Kishan\Assignment6\Api\FormRepositoryInterface">
+        <attribute code="address_id" type="int">
+            <resources>
+                <resource ref="anonymous"/>
+            </resources>
+            <join reference_table="kishandb" reference_field="entity_id" join_on_field="address_id">
+                <field>Address Id</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+</config>
