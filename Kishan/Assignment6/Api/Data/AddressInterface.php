@@ -14,17 +14,70 @@ interface AddressInterface extends ExtensibleDataInterface
     const UPDATED_AT = 'updated_at';
 
 
+    /**
+     * @return int
+     */
     public function getId(): int;
+
+    /**
+     * @param $id
+     * @return $this
+     */
     public function setId($id): AddressInterface;
+
+    /**
+     * @return int
+     */
     public function getAddressId(): int;
-    public function setAddressId($address_id): AddressInterface;
+
+    /**
+     * @param $addressId
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
+    public function setAddressId($addressId): AddressInterface;
+
+    /**
+     * @return string
+     */
     public function getPermanentAddress(): string;
+
+    /**
+     * @param string $permanent_address
+     * @return $this
+     */
     public function setPermanentAddress(string $permanent_address): AddressInterface;
+
+    /**
+     * @return string
+     */
     public function getTemporaryAddress(): string;
+
+    /**
+     * @param string $temporary_address
+     * @return $this
+     */
     public function setTemporaryAddress(string $temporary_address): AddressInterface;
+
+    /**
+     * @return string
+     */
     public function getCreatedAt(): string;
+
+    /**
+     * @param string $createdAt
+     * @return $this
+     */
     public function setCreatedAt(string $createdAt):AddressInterface;
+
+    /**
+     * @return string
+     */
     public function getUpdatedAt(): string;
+
+    /**
+     * @param string $updatedAt
+     * @return $this
+     */
     public function setUpdatedAt(string $updatedAt):AddressInterface;
     /**
      * Retrieve existing extension attributes object or create a new one.

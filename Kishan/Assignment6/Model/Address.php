@@ -28,50 +28,93 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
 
     /**
      * @param int $id
-     * @return AddressInterface
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
     public function setId($id): AddressInterface
     {
         return $this->setData(self::ID, $id);
     }
 
+    /**
+     * @return int
+     */
     public function getAddressId(): int
     {
         return $this->getData(self::ADDRESS_ID);
     }
-    public function setAddressId($address_id): AddressInterface
+
+    /**
+     * @param $addressId
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
+    public function setAddressId($addressId): AddressInterface
     {
-        return $this->setData(self::ADDRESS_ID, $address_id);
+        return $this->setData(self::ADDRESS_ID, $addressId);
     }
+
+    /**
+     * @return string
+     */
     public function getPermanentAddress(): string
     {
         return $this->getData(self::PERMANENT_ADDRESS);
     }
+
+    /**
+     * @param string $permanent_address
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
     public function setPermanentAddress(string $permanent_address): AddressInterface
     {
         return $this->setData(self::PERMANENT_ADDRESS, $permanent_address);
     }
+
+    /**
+     * @return string
+     */
     public function getTemporaryAddress(): string
     {
         return $this->getData(self::TEMPORARY_ADDRESS);
     }
+
+    /**
+     * @param string $temporary_address
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
     public function setTemporaryAddress(string $temporary_address): AddressInterface
     {
         return $this->setData(self::TEMPORARY_ADDRESS, $temporary_address);
     }
 
+    /**
+     * @return string
+     */
     public function getCreatedAt():string
     {
         return $this->getData(self::CREATED_AT);
     }
+
+    /**
+     * @param string $createdAt
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
     public function setCreatedAt(string $createdAt):AddressInterface
     {
         return $this->setData(self::CREATED_AT, $createdAt);
     }
+
+    /**
+     * @return string
+     */
     public function getUpdatedAt():string
     {
         return $this->getData(self::UPDATED_AT);
     }
+
+    /**
+     * @param string $updatedAt
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
     public function setUpdatedAt(string $updatedAt):AddressInterface
     {
         return $this->setData(self::UPDATED_AT, $updatedAt);

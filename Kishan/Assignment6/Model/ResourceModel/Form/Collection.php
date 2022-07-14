@@ -19,18 +19,18 @@ class Collection extends AbstractCollection
     /**
      * @return $this|Collection|void
      */
-    protected function _initSelect()
-    {
-        $this->getSelect()
-            ->from(['main_table' => $this->getMainTable()])
-            ->joinInner(
-                'kishan_assignment',
-                'main_table.entity_id = kishan_assignment.address_id',
-                array('*')
-            );
-        echo '<pre>';
-       var_dump($this->getData());die();
-
-        return $this;
-    }
+//    protected function _initSelect()
+//    {
+//        $this->getSelect()
+//            ->from(['main_table' => $this->getMainTable()])
+//            ->joinInner(
+//                'kishan_assignment',
+//                'main_table.entity_id = kishan_assignment.address_id',
+//                array('*')
+//            );
+//        echo '<pre>';
+//       var_dump($this->getData());die();
+//
+//        return $this;
+//    }
 }

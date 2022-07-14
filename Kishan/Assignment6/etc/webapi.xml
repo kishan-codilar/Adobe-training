@@ -3,7 +3,13 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
 
     <!--Fetch the Data -->
-    <route url="/V1/Kishan/Assignment6/:Id" method="GET">
+    <route url="/V1/Kishan/Assignment6/:entityId" method="GET">
+        <service class="Kishan\Assignment6\Api\FormRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/Kishan/Assignment6/Address:entityId" method="GET">
         <service class="Kishan\Assignment6\Api\AddressRepositoryInterface" method="getById"/>
         <resources>
             <resource ref="anonymous"/>

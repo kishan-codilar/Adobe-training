@@ -34,7 +34,7 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
-        <constraint xsi:type="foreign" referenceId="KISHAN_ASSIGNMENT_ADDRESS_ID_KISHANDB_ENTITY_ID" table="kishan_assignment" column="address_id" referenceTable="kishandb" referenceColumn="entity_id"/>
+<!--        <constraint xsi:type="foreign" referenceId="KISHAN_ASSIGNMENT_ADDRESS_ID_KISHANDB_ENTITY_ID" table="kishan_assignment" column="address_id" referenceTable="kishandb" referenceColumn="entity_id"/>-->
     </table>
 </schema>
 

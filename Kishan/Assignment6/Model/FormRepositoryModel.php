@@ -38,8 +38,15 @@ class FormRepositoryModel implements FormRepositoryInterface
      *
      * @var FormExtensionFactory
      */
-    protected $extensionFactory;
+    protected FormExtensionFactory $extensionFactory;
 
+    /**
+     * FormRepositoryModel constructor.
+     * @param CollectionFactory $collectionFactory
+     * @param FormFactory $modelFactory
+     * @param ResourceModel $resourceModel
+     * @param FormInterface $formInterface
+     */
     public function __construct(
         CollectionFactory $collectionFactory,
         ModelFactory $modelFactory,
@@ -53,25 +60,16 @@ class FormRepositoryModel implements FormRepositoryInterface
     }
 
     /**
-     * Return Model
+     * Get Id
      *
-     * @param $entity_id
-     * @return Model
-     * @throws NoSuchEntityException
+     * @param int $entityId
+     * @return \Kishan\Assignment6\Model\Form
      */
-    public function getById($entity_id)
+    public function getById($entityId)
     {
         $model = $this->modelFactory->create();
-        $model->load($entity_id);
-        if ($this->formInterface->getExtensionAttributes()) {
-            return $model;
-        }
-//         if (!$model->getId()) {
-//            throw new NoSuchEntityException(__('Id %1 does not exist', $entity_id));
-//        }
-
-
-        return $model->getData();
+        $this->resourceModel->load($model, $entityId);
+        return $model;
     }
 
     /**
@@ -86,6 +84,8 @@ class FormRepositoryModel implements FormRepositoryInterface
     }
 
     /**
+     * Get array Data
+     *
      * @param $id
      * @return array
      */

@@ -10,8 +10,21 @@ interface AddressRepositoryInterface
     /**
      * GetId
      *
-     * @param Entity_id $id
-     * @return array[]
+     * @param int $id
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
     public function getById($id);
+
+    /**
+     * Return Collection
+     *
+     * @return array Collection[]
+     */
+    public function getCollection();
+
+    /**
+     * @param $id
+     * @return \Kishan\Assignment6\Api\Data\AddressInterface
+     */
+    public function getAddressDataId($id);
 }

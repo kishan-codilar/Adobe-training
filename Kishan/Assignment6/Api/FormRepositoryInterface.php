@@ -11,10 +11,10 @@ interface FormRepositoryInterface
     /**
      * GetId
      *
-     * @param Entity_id $entity_id
-     * @return array[]
+     * @param int $entityId
+     * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
-    public function getById($entity_id);
+    public function getById($entityId);
 
     /**
      * GetCollection
