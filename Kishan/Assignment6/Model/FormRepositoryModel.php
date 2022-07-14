@@ -87,11 +87,15 @@ class FormRepositoryModel implements FormRepositoryInterface
      * Get array Data
      *
      * @param $id
-     * @return array
+     * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
     public function getDataById($id)
     {
-        $list = $this->getCollection()->addFieldToFilter('entity_id', ['in'=>$id]);
-        return $list->getData();
+//        $list = $this->getCollection()->addFieldToFilter('entity_id', ['in'=>$id]);
+//        return $list->getData();
+        $object=$this->modelFactory->create();
+        $collection=$object->getCollection();
+        $collection->addFieldToFilter('entity_id', $id);
+        return $collection->getData();
     }
 }

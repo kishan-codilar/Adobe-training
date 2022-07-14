@@ -7,8 +7,8 @@
         <plugin name="extension_attribute"
                 type="Kishan\Assignment6\Plugin\FormRepositoryInterface" sortOrder="1"/>
     </type>
-<!--    <type name="Kishan\Assignment6\Api\AddressRepositoryInterface">-->
-<!--        <plugin name="address_repository_interface"-->
-<!--                type="Kishan\Assignment6\Plugin\AddressRepositoryInterface" sortOrder="1"/>-->
-<!--    </type>-->
+    <type name="Kishan\Assignment6\Api\AddressRepositoryInterface">
+        <plugin name="address_repository_interface"
+                type="Kishan\Assignment6\Plugin\AddressRepositoryInterface" sortOrder="1"/>
+    </type>
 </config>

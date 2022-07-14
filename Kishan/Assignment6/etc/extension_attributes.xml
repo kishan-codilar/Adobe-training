@@ -3,9 +3,10 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
     <extension_attributes for="Kishan\Assignment6\Api\Data\FormInterface">
         <attribute code="address_id" type="Kishan\Assignment6\Api\Data\AddressInterface[]">
-            <resources>
-                <resource ref="anonymous"/>
-            </resources>
+        </attribute>
+    </extension_attributes>
+    <extension_attributes for="Kishan\Assignment6\Api\Data\AddressInterface">
+        <attribute code="custom_id" type="Kishan\Assignment6\Api\Data\FormInterface[]">
         </attribute>
     </extension_attributes>
 </config>

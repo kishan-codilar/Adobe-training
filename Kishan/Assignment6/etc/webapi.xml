@@ -9,7 +9,7 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
-    <route url="/V1/Kishan/Assignment6/Address:entityId" method="GET">
+    <route url="/V1/Kishan/Assignment6/Address/:id" method="GET">
         <service class="Kishan\Assignment6\Api\AddressRepositoryInterface" method="getById"/>
         <resources>
             <resource ref="anonymous"/>
