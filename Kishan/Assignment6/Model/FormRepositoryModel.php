@@ -11,27 +11,29 @@ use Kishan\Assignment6\Model\ResourceModel\Form\Collection;
 use Kishan\Assignment6\Model\ResourceModel\Form\CollectionFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Kishan\Assignment6\Api\Data\FormExtensionFactory;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Kishan\Assignment6\Api\Data\FormSearchResultInterfaceFactory;
 
 class FormRepositoryModel implements FormRepositoryInterface
 {
     /**
      * @var FormFactory
      */
-    private $modelFactory;
+    private FormFactory $modelFactory;
 
     /**
      * @var ResourceModel
      */
-    private $resourceModel;
+    private ResourceModel $resourceModel;
 
     /**
      * @var CollectionFactory
      */
-    private $collectionFactory;
+    private CollectionFactory $collectionFactory;
     /**
      * @var FormInterface
      */
-    private $formInterface;
+    private FormInterface $formInterface;
 
     /**
      * Order Extension Attributes Factory
@@ -39,6 +41,14 @@ class FormRepositoryModel implements FormRepositoryInterface
      * @var FormExtensionFactory
      */
     protected FormExtensionFactory $extensionFactory;
+    /**
+     * @var CollectionProcessorInterface
+     */
+    private CollectionProcessorInterface $collectionProcessor;
+    /**
+     * @var FormSearchResultInterfaceFactory
+     */
+    private FormSearchResultInterfaceFactory $formSearchResultInterfaceFactory;
 
     /**
      * FormRepositoryModel constructor.
@@ -46,17 +56,23 @@ class FormRepositoryModel implements FormRepositoryInterface
      * @param FormFactory $modelFactory
      * @param ResourceModel $resourceModel
      * @param FormInterface $formInterface
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param FormSearchResultInterfaceFactory $formSearchResultInterfaceFactory
      */
     public function __construct(
         CollectionFactory $collectionFactory,
         ModelFactory $modelFactory,
         ResourceModel $resourceModel,
-        FormInterface $formInterface
+        FormInterface $formInterface,
+        CollectionProcessorInterface $collectionProcessor,
+        FormSearchResultInterfaceFactory $formSearchResultInterfaceFactory
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
         $this->collectionFactory = $collectionFactory;
         $this->formInterface = $formInterface;
+        $this->collectionProcessor = $collectionProcessor;
+        $this->formSearchResultInterfaceFactory = $formSearchResultInterfaceFactory;
     }
 
     /**
@@ -75,12 +91,12 @@ class FormRepositoryModel implements FormRepositoryInterface
     /**
      * Return Collection
      *
-     * @return array
+     * @return Collection
      */
     public function getCollection()
     {
         $collection = $this->collectionFactory->create();
-        return $collection->getData();
+        return $collection;
     }
 
     /**
@@ -93,9 +109,50 @@ class FormRepositoryModel implements FormRepositoryInterface
     {
 //        $list = $this->getCollection()->addFieldToFilter('entity_id', ['in'=>$id]);
 //        return $list->getData();
-        $object=$this->modelFactory->create();
-        $collection=$object->getCollection();
-        $collection->addFieldToFilter('entity_id', $id);
+        $collection=$this->getCollection()->addFieldToFilter('entity_id', $id);
         return $collection->getData();
+    }
+
+    /**
+     * Get Data list
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return \Kishan\Assignment6\Api\Data\FormSearchResultInterface
+     */
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
+    {
+        $collection = $this->collectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, ($collection));
+        $searchResults = $this->formSearchResultInterfaceFactory->create();
+//        $searchResults->setSearchCriteria($searchCriteria);
+        $searchResults->setItems($collection->getItems());
+        $searchResults->setTotalCount($collection->getSize());
+        $searchResults->setSearchCriteria($searchCriteria);
+        return $searchResults;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function create()
+    {
+        return $this->modelFactory->create();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function save(\Kishan\Assignment6\Api\Data\FormInterface $modelData)
+    {
+        return $this->resourceModel->save($modelData);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function load($value, $field = null)
+    {
+        $model = $this->create();
+        $this->resourceModel->load($model, $value, $field);
+        return $model;
     }
 }

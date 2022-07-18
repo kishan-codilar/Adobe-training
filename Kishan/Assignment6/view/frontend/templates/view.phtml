@@ -1,0 +1,49 @@
+<?php
+
+/** @var \Kishan\Assignment6\Block\Form $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$form = $block->getAllDetails();
+?>
+<h2>Details</h2>
+<div class="brand-listing">
+
+    <?php if (count($form) > 0): ?>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th><?= $escaper->escapeHtml(__('Enable'))?></th>
+                <th><?= $escaper->escapeHtml(__('FirstName'))?></th>
+                <th><?= $escaper->escapeHtml(__('LastName')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Dob')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Number')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Weight')) ?></th>
+                <th><?= $escaper->escapeHtml(__('Price')) ?></th>
+                <th><?= $escaper->escapeHtml(__('create')) ?></th>
+                <th><?= $escaper->escapeHtml(__('update')) ?></th>
+            </tr>
+            <?php foreach ($block->getAllDetails() as $form): ?>
+                <tr>
+                    <td><?= $escaper->escapeHtml($form->getEntityid()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getEnable()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getFirstname()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getLastname()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getDob()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getNumber()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getWeight()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getPrice()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getCreatedAt()) ?></td>
+                    <td><?= $escaper->escapeHtml($form->getUpdatedAt()) ?></td>
+                    <td>
+                        <span>
+                            <button><a href="<?php echo $block->getEditUrl() .'entity_id/'. $form->getEntityId()?>">Edit</a></button>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </thead>
+        </table>
+    <?php else: ?>
+        <h3>No Details are available</h3>
+    <?php endif; ?>
+</div>

@@ -23,7 +23,9 @@ interface AddressRepositoryInterface
     public function getCollection();
 
     /**
-     * @param $id
+     * Return AddressDataId
+     *
+     * @param int $id
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
     public function getAddressDataId($id);
