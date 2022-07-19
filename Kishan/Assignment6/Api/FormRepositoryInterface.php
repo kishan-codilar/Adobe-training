@@ -28,15 +28,15 @@ interface FormRepositoryInterface
      * Save Data
      *
      * @param Data\FormInterface $modelData
-     * @return FormInterface
+     * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
-    public function save(FormInterface $modelData);
+    public function save(\Kishan\Assignment6\Api\Data\FormInterface $modelData);
 
     /**
      * Load
      *
-     * @param $value
-     * @param $field
+     * @param string $value
+     * @param string|null $field
      * @return Form
      */
     public function load($value, $field = null);
@@ -63,4 +63,20 @@ interface FormRepositoryInterface
      * @return \Kishan\Assignment6\Api\Data\FormSearchResultInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
+
+    /**
+     * Save the Data
+     *
+     * @param FormInterface $data
+     * @return string
+     */
+    public function saveForm($data);
+
+    /**
+     * Delete By Id
+     *
+     * @param int $entityId
+     * @return string
+     */
+    public function deleteById($entityId);
 }

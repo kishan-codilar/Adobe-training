@@ -29,4 +29,12 @@ interface AddressRepositoryInterface
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
     public function getAddressDataId($id);
+
+    /**
+     * Get Data list
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return \Kishan\Assignment6\Api\Data\FormSearchResultInterface
+     */
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
 }

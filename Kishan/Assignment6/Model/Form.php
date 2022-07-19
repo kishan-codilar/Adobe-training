@@ -11,7 +11,7 @@ use Kishan\Assignment6\Model\ResourceModel\Form as ResourceModel;
 class Form extends AbstractExtensibleModel implements FormInterface
 {
     /**
-     * @inheritDoc
+     * Form Constructor.
      */
     protected function _construct()
     {
@@ -19,6 +19,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the Entity Id
+     *
      * @inerhitDoc
      * @return int
      */
@@ -28,6 +30,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the entity Id
+     *
      * @param int $entityId
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -37,6 +41,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the Status
+     *
      * @inerhitDoc
      * @return bool
      */
@@ -46,6 +52,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the status
+     *
      * @param bool $enable
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -55,6 +63,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the first name
+     *
      * @inerhitDoc
      * @return string
      */
@@ -64,6 +74,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the first name
+     *
      * @param string $firstname
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -73,14 +85,17 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the last name
+     *
      * @return string
      */
     public function getLastname():string
     {
         return $this->getData(self::LASTNAME);
     }
-
     /**
+     * Sets the Last name
+     *
      * @param string $lastname
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -90,6 +105,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the  Date of birth
+     *
      * @return string
      */
     public function getDob(): string
@@ -98,6 +115,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the Date of Birth
+     *
      * @param string $dob
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -107,6 +126,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the Mobile Number
+     *
      * @inerhitDoc
      * @return string
      */
@@ -116,6 +137,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the Mobile Number
+     *
      * @param string $number
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -125,6 +148,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Returhn the Weight
+     *
      * @return float
      */
     public function getWeight(): float
@@ -133,6 +158,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the Weight
+     *
      * @param float $weight
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -142,6 +169,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Return the Price
+     *
      * @return float
      */
     public function getPrice(): float
@@ -150,6 +179,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the Price
+     *
      * @param float $price
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -159,6 +190,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Gets the Created Dare
+     *
      * @return string
      */
     public function getCreatedAt():string
@@ -167,6 +200,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the created Date
+     *
      * @param string $createdAt
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -176,6 +211,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Gets the Updated Date
+     *
      * @return string
      */
     public function getUpdatedAt():string
@@ -184,6 +221,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     }
 
     /**
+     * Sets the Updated Date
+     *
      * @param string $updatedAt
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
@@ -198,9 +237,8 @@ class Form extends AbstractExtensibleModel implements FormInterface
     {
         return $this->_getExtensionAttributes();
     }
-
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function setExtensionAttributes(\Kishan\Assignment6\Api\Data\FormExtensionInterface $extensionAttributes)
     {

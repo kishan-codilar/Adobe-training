@@ -15,4 +15,18 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <!-- Save data-->
+    <route url="/V1/Kishan/Assignment6/save/" method="POST">
+        <service class="Kishan\Assignment6\Api\FormRepositoryInterface" method="saveForm"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Delete data-->
+    <route url="/V1/Kishan/Assignment6/Delete/:entityId" method="DELETE">
+        <service class="Kishan\Assignment6\Api\FormRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

@@ -102,7 +102,7 @@ class FormRepositoryModel implements FormRepositoryInterface
     /**
      * Get array Data
      *
-     * @param $id
+     * @param int $id
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
     public function getDataById($id)
@@ -115,6 +115,7 @@ class FormRepositoryModel implements FormRepositoryInterface
 
     /**
      * Get Data list
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Kishan\Assignment6\Api\Data\FormSearchResultInterface
      */
@@ -123,7 +124,6 @@ class FormRepositoryModel implements FormRepositoryInterface
         $collection = $this->collectionFactory->create();
         $this->collectionProcessor->process($searchCriteria, ($collection));
         $searchResults = $this->formSearchResultInterfaceFactory->create();
-//        $searchResults->setSearchCriteria($searchCriteria);
         $searchResults->setItems($collection->getItems());
         $searchResults->setTotalCount($collection->getSize());
         $searchResults->setSearchCriteria($searchCriteria);
@@ -140,6 +140,7 @@ class FormRepositoryModel implements FormRepositoryInterface
 
     /**
      * @inheritDoc
+     * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
     public function save(\Kishan\Assignment6\Api\Data\FormInterface $modelData)
     {
@@ -154,5 +155,30 @@ class FormRepositoryModel implements FormRepositoryInterface
         $model = $this->create();
         $this->resourceModel->load($model, $value, $field);
         return $model;
+    }
+    /**
+     * @inheritDoc
+     */
+    public function saveForm($data)
+    {
+        $model=$this->create();
+        $model->setEnable($data['enable']);
+        $model->setFirstname($data['firstname']);
+        $model->setLastname($data['lastname']);
+        $model->setDob($data['dob']);
+        $model->setNumber($data['number']);
+        $model->setWeight($data['weight']);
+        $model->setPrice($data['price']);
+        $this->save($model);
+        return 'Success';
+    }
+    /**
+     * @inheritDoc
+     */
+    public function deleteById($entityId)
+    {
+        $model = $this->load($entityId);
+        $model->delete();
+        return 'successfully deleted the record';
     }
 }

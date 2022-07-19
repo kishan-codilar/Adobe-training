@@ -32,6 +32,14 @@ class AddressRepositoryInterface
      */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
 
+    /**
+     * AddressRepositoryInterface constructor.
+     * @param AddressExtensionFactory $extensionFactory
+     * @param FormRepositoryModel $formRepository
+     * @param CollectionFactory $collectionFactory
+     * @param AddressExtension $formExtension
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     */
     public function __construct(
         AddressExtensionFactory $extensionFactory,
         FormRepositoryModel $formRepository,
@@ -47,6 +55,8 @@ class AddressRepositoryInterface
     }
 
     /**
+     * Return the Data by Id
+     *
      * @param \Kishan\Assignment6\Api\AddressRepositoryInterface $subject
      * @param \Kishan\Assignment6\Api\Data\AddressInterface $address
      *
@@ -57,9 +67,9 @@ class AddressRepositoryInterface
         \Kishan\Assignment6\Api\Data\AddressInterface $address
     ) {
         $customExtensionAttributes = $address->getExtensionAttributes();
-        $filters = $this->searchCriteriaBuilder->addFilter('entity_id', $address->getAddressId());
+//        $filters = $this->searchCriteriaBuilder->addFilter('entity_id', $address->getAddressId());
         $customAttributes = $customExtensionAttributes ? $customExtensionAttributes : $this->extensionFactory->create();
-        $formAddress = $this->formRepository->getList($filters->create())->getItems();
+        $formAddress = $this->formRepository->getById($address->getAddressId());
         $customAttributes->setCustomId($formAddress);
         return $address->setExtensionAttributes($customAttributes);
     }

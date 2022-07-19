@@ -7,10 +7,10 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\AbstractExtensibleModel;
 use Kishan\Assignment6\Model\ResourceModel\Address as ResourceModel;
 
-class Address extends  AbstractExtensibleModel implements AddressInterface
+class Address extends AbstractExtensibleModel implements AddressInterface
 {
     /**
-     * Init
+     * Address constructor.
      */
     protected function _construct()
     {
@@ -18,7 +18,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
-     * @inerhitDoc
+     * Return the Id
+     *
      * @return int
      */
     public function getId(): int
@@ -27,6 +28,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Sets the Id
+     *
      * @param int $id
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
@@ -36,6 +39,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Return the address id
+     *
      * @return int
      */
     public function getAddressId(): int
@@ -44,7 +49,9 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
-     * @param $addressId
+     * Sets the Address Id
+     *
+     * @param int $addressId
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
     public function setAddressId($addressId): AddressInterface
@@ -53,6 +60,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Gets the Permanent Address
+     *
      * @return string
      */
     public function getPermanentAddress(): string
@@ -61,6 +70,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Sets the Permanent Address
+     *
      * @param string $permanent_address
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
@@ -70,6 +81,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Return the Temporary Address
+     *
      * @return string
      */
     public function getTemporaryAddress(): string
@@ -78,6 +91,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Sets the Temporary Address
+     *
      * @param string $temporary_address
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
@@ -87,6 +102,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Gets the Created Date
+     *
      * @return string
      */
     public function getCreatedAt():string
@@ -95,6 +112,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Sets the created Date
+     *
      * @param string $createdAt
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
@@ -104,6 +123,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Return the Updated Date
+     *
      * @return string
      */
     public function getUpdatedAt():string
@@ -112,6 +133,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     }
 
     /**
+     * Set the Updated Date
+     *
      * @param string $updatedAt
      * @return \Kishan\Assignment6\Api\Data\AddressInterface
      */
@@ -126,9 +149,8 @@ class Address extends  AbstractExtensibleModel implements AddressInterface
     {
         return $this->_getExtensionAttributes();
     }
-
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function setExtensionAttributes(\Kishan\Assignment6\Api\Data\AddressExtensionInterface $extensionAttributes)
     {

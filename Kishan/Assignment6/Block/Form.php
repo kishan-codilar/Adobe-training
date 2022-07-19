@@ -21,8 +21,6 @@ class Form extends Template
      * @var SearchCriteriaBuilder
      */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
-
-
     /**
      * SimpleForm constructor.
      * @param Template\Context $context
@@ -45,6 +43,8 @@ class Form extends Template
     }
 
     /**
+     * Return the Edit Url
+     *
      * @return string
      */
     public function getEditUrl()
@@ -53,6 +53,18 @@ class Form extends Template
     }
 
     /**
+     * Return the Delete Url
+     *
+     * @return string
+     */
+    public function getDeleteUrl()
+    {
+        return $this->getUrl('assignment6/index/delete');
+    }
+
+    /**
+     * Return the Save Url
+     *
      * @return string
      */
     public function getSaveUrl()
@@ -61,22 +73,19 @@ class Form extends Template
     }
 
     /**
+     * Edit the Data
+     *
      * @return \Kishan\Assignment6\Api\Data\FormInterface
      */
     public function getUpdate()
     {
         $id = $this->getRequest()->getParam('entity_id');
-
         $collection = $this->formRepository->getById($id);
         return $collection;
-//        $id = $this->getRequest()->getParam('entity_id');
-//        $col = $this->searchCriteriaBuilder->addFilter('entity_id', $id);
-//        $collection = $this->formRepository->getList($this->searchCriteriaBuilder->create());
-//        return $collection->getItems();
     }
 
     /**
-     * return array
+     * Return array
      *
      * @return array
      */

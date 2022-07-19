@@ -8,16 +8,16 @@ use Magento\Framework\Api\ExtensibleDataInterface;
 
 interface FormInterface extends ExtensibleDataInterface
 {
-    const ENTITY_ID = 'entity_id';
-    const ENABLE = 'enable';
-    const FIRSTNAME  = 'firstname';
-    const LASTNAME  = 'lastname';
-    const DOB = 'dob';
-    const NUMBER = 'number';
-    const WEIGHT  = 'weight';
-    const PRICE = 'price';
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+    public const ENTITY_ID = 'entity_id';
+    public const ENABLE = 'enable';
+    public const FIRSTNAME  = 'firstname';
+    public const LASTNAME  = 'lastname';
+    public const DOB = 'dob';
+    public const NUMBER = 'number';
+    public const WEIGHT  = 'weight';
+    public const PRICE = 'price';
+    public const CREATED_AT = 'created_at';
+    public const UPDATED_AT = 'updated_at';
 
     /**
      * Return Entity Id
@@ -42,7 +42,7 @@ interface FormInterface extends ExtensibleDataInterface
     public function getEnable(): bool;
 
     /**
-     * set Enable
+     * Set Enable
      *
      * @param bool $enable
      * @return $this
@@ -117,7 +117,7 @@ interface FormInterface extends ExtensibleDataInterface
     public function getWeight(): float;
 
     /**
-     * set weight
+     * Set weight
      *
      * @param float $weight
      * @return $this

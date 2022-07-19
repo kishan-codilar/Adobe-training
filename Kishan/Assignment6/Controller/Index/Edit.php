@@ -14,6 +14,12 @@ class Edit extends Action
      */
     protected $pageFactory;
 
+    /**
+     * Edit constructor.
+     *
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $pageFactory
@@ -33,4 +39,3 @@ class Edit extends Action
         return $this->pageFactory->create();
     }
 }
-

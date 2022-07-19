@@ -6,7 +6,7 @@
         </attribute>
     </extension_attributes>
     <extension_attributes for="Kishan\Assignment6\Api\Data\AddressInterface">
-        <attribute code="custom_id" type="Kishan\Assignment6\Api\Data\FormInterface[]">
+        <attribute code="custom_id" type="Kishan\Assignment6\Api\Data\FormInterface">
         </attribute>
     </extension_attributes>
 </config>

@@ -7,6 +7,7 @@ use Kishan\Assignment6\Api\Data\FormExtension;
 use Kishan\Assignment6\Api\Data\FormExtensionFactory;
 use Kishan\Assignment6\Model\AddressRepositoryModel;
 use Kishan\Assignment6\Model\ResourceModel\Form\CollectionFactory;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class FormRepositoryInterface
 {
@@ -30,6 +31,10 @@ class FormRepositoryInterface
      * @var FormExtension
      */
     private FormExtension $formExtension;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
 
     /**
      * FormRepositoryInterface constructor.
@@ -37,20 +42,25 @@ class FormRepositoryInterface
      * @param AddressRepositoryModel $addressRepository
      * @param CollectionFactory $collectionFactory
      * @param FormExtension $formExtension
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         FormExtensionFactory $extensionFactory,
         AddressRepositoryModel $addressRepository,
         CollectionFactory $collectionFactory,
-        FormExtension $formExtension
+        FormExtension $formExtension,
+        SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
         $this->extensionFactory = $extensionFactory;
         $this->addressRepository = $addressRepository;
         $this->collectionFactory = $collectionFactory;
         $this->formExtension = $formExtension;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
+     * Return the Data by Id
+     *
      * @param \Kishan\Assignment6\Api\FormRepositoryInterface $subject
      * @param \Kishan\Assignment6\Api\Data\FormInterface $form
      * @return \Kishan\Assignment6\Api\Data\FormInterface
@@ -60,8 +70,9 @@ class FormRepositoryInterface
         \Kishan\Assignment6\Api\Data\FormInterface $form
     ) {
         $extensionAttributes = $form->getExtensionAttributes();
+        $filters = $this->searchCriteriaBuilder->addFilter('address_id', $form->getEntityId());
         $extensionAttribute = $extensionAttributes ? $extensionAttributes : $this->extensionFactory->create();
-        $formAddress = $this->addressRepository->getAddressDataId($form->getEntityId());
+        $formAddress = $this->addressRepository->getList($filters->create())->getItems();
         $extensionAttribute->setAddressId($formAddress);
         return $form->setExtensionAttributes($extensionAttribute);
     }

@@ -2,41 +2,40 @@
 /** @var \Kishan\Assignment6\Block\Form $block */
 /** @var \Magento\Framework\Escaper $escaper */
 $data = $block->getUpdate();
-//$data=$block->getUpdate();
 ?>
-<form  method="POST" action="<?= $block->getSaveUrl() ?>" >
+<form  method="POST" action="<?= $escaper->escapeUrl($block->getSaveUrl())?>" >
     <h3>Edit Form Details</h3>
     <div>
         <label>ID</label>
-        <input name="entity_id" type="text" value="<?= $data['entity_id']?>" readonly/>
+        <input name="entity_id" type="text" value="<?= $escaper->escapeHtml($data['entity_id'])?>" readonly/>
     </div>
     <div>
         <label>Enabled</label>
-        <input name="enable" type="text" value="<?=  $data['enable']?>"/>
+        <input name="enable" type="text" value="<?=  $escaper->escapeHtml($data['enable'])?>"/>
     </div>
     <div>
         <label>First Name</label>
-        <input name="firstname" type="text" value="<?=  $data['firstname']?>"/>
+        <input name="firstname" type="text" value="<?=  $escaper->escapeHtml($data['firstname'])?>"/>
     </div>
     <div>
         <label>Last Name</label>
-        <input name="lastname" type="text" value="<?=  $data['lastname']?>" />
+        <input name="lastname" type="text" value="<?= $escaper->escapeHtml($data['lastname'])?>" />
     </div>
     <div>
         <label>Dob</label>
-        <input name="dob" type="date" value="<?=  $data['dob']?>" />
+        <input name="dob" type="date" value="<?=  $escaper->escapeHtml($data['dob'])?>" />
     </div>
     <div>
         <label>Mobile Number</label>
-        <input name="number" type="number" value="<?=  $data['number']?>" />
+        <input name="number" type="number" value="<?=  $escaper->escapeHtml($data['number'])?>" />
     </div>
     <div>
         <label>Weight</label>
-        <input name="weight" type="text" value="<?=  $data['weight']?>" />
+        <input name="weight" type="text" value="<?=  $escaper->escapeHtml($data['weight'])?>" />
     </div>
     <div>
         <label>Price</label>
-        <input name="price" type="text" value="<?=  $data['price']?>" />
+        <input name="price" type="text" value="<?=  $escaper->escapeHtml($data['price'])?>" />
     </div>
     <button>save</button>
 </form>

@@ -44,14 +44,14 @@ class Save extends Action
     }
 
     /**
+     * Save the Data
+     *
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
         $modelData = $this->formRepository->create();
         $data = $this->getRequest()->getParams();
-        $modelData->load($data['entity_id']);
-//        var_dump ($data);die();
         $modelData->setEnable($data['enable']);
         $modelData->setFirstname($data['firstname']);
         $modelData->setLastname($data['lastname']);

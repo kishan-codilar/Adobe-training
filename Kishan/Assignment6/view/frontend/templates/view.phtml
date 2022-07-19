@@ -36,7 +36,10 @@ $form = $block->getAllDetails();
                     <td><?= $escaper->escapeHtml($form->getUpdatedAt()) ?></td>
                     <td>
                         <span>
-                            <button><a href="<?php echo $block->getEditUrl() .'entity_id/'. $form->getEntityId()?>">Edit</a></button>
+                            <button><a href="<?= $escaper->escapeUrl($block->getEditUrl() .'entity_id/'. $form->getEntityId())?>">Edit</a></button>
+                        </span>
+                        <span>
+                            <button><a href="<?= $escaper->escapeUrl($block->getDeleteUrl() .'entity_id/'. $form->getEntityId())?>">Delete</a></button>
                         </span>
                     </td>
                 </tr>
