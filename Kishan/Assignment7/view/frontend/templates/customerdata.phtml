@@ -1,0 +1,16 @@
+<div class = "customer-data" data-bind="scope: 'section'">
+    <h1 data-bind="text: customerdata().customername"></h1>
+</div>
+<script type = "text/x-magento-init">
+    {
+    "*": {
+            "Magento_Ui/js/core/app": {
+              "components": {
+               "section": {
+                  "component": "Kishan_Assignment7/js/custom-info"
+                  }
+               }
+            }
+         }
+    }
+ </script>
