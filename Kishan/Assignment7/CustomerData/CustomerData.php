@@ -23,7 +23,7 @@ class CustomerData implements SectionSourceInterface
     }
 
     /**
-     * Return Array with data for a private block
+     * Return Array with Data for a private block
      *
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
