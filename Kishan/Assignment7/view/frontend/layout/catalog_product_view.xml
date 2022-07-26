@@ -6,7 +6,6 @@
                    template="Kishan_Assignment7::customerdata.phtml"
                    name="Kishan_Assignment7_customername"
             />
-
         </referenceContainer>
     </body>
 </page>
