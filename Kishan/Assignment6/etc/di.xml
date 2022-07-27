@@ -1,15 +1,15 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Kishan\Assignment6\Api\FormRepositoryInterface" type="Kishan\Assignment6\Model\FormRepositoryModel" />
-    <preference for="Kishan\Assignment6\Api\AddressRepositoryInterface" type="Kishan\Assignment6\Model\AddressRepositoryModel" />
+    <preference for="Kishan\Assignment6\Api\FormRepositoryInterface" type="Kishan\Assignment6\Model\FormRepository" />
+    <preference for="Kishan\Assignment6\Api\AddressRepositoryInterface" type="Kishan\Assignment6\Model\AddressRepository" />
     <preference for="Kishan\Assignment6\Api\Data\FormInterface" type="Kishan\Assignment6\Model\Form" />
     <preference for="Kishan\Assignment6\Api\Data\AddressInterface" type="Kishan\Assignment6\Model\Address" />
     <preference for="Kishan\Assignment6\Api\Data\FormSearchResultInterface" type="Kishan\Assignment6\Model\FormSearchResult" />
     <type name="Kishan\Assignment6\Api\FormRepositoryInterface">
         <plugin name="extension_attribute"
-                type="Kishan\Assignment6\Plugin\FormRepositoryInterface" sortOrder="1"/>
+                type="Kishan\Assignment6\Plugin\FormRepository" sortOrder="1"/>
     </type>
     <type name="Kishan\Assignment6\Api\AddressRepositoryInterface">
         <plugin name="address_repository_interface"
-                type="Kishan\Assignment6\Plugin\AddressRepositoryInterface" sortOrder="1"/>
+                type="Kishan\Assignment6\Plugin\AddressRepository" sortOrder="1"/>
     </type>
 </config>
