@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Kishan\Assignment6\Plugin;
 
 use Kishan\Assignment6\Api\Data\FormExtension;

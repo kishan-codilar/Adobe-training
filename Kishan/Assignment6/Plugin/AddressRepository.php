@@ -67,7 +67,6 @@ class AddressRepository
         \Kishan\Assignment6\Api\Data\AddressInterface $address
     ) {
         $customExtensionAttributes = $address->getExtensionAttributes();
-//        $filters = $this->searchCriteriaBuilder->addFilter('entity_id', $address->getAddressId());
         $customAttributes = $customExtensionAttributes ? $customExtensionAttributes : $this->extensionFactory->create();
         $formAddress = $this->formRepository->getDataById($address->getAddressId());
         $customAttributes->setCustomId($formAddress);

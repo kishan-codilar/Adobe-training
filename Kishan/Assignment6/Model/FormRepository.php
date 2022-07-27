@@ -17,9 +17,9 @@ use Kishan\Assignment6\Api\Data\FormSearchResultInterfaceFactory;
 class FormRepository implements FormRepositoryInterface
 {
     /**
-     * @var FormFactory
+     * @var ModelFactory
      */
-    private FormFactory $modelFactory;
+    private ModelFactory $modelFactory;
 
     /**
      * @var ResourceModel
@@ -53,7 +53,7 @@ class FormRepository implements FormRepositoryInterface
     /**
      * FormRepository constructor.
      * @param CollectionFactory $collectionFactory
-     * @param FormFactory $modelFactory
+     * @param ModelFactory $modelFactory
      * @param ResourceModel $resourceModel
      * @param FormInterface $formInterface
      * @param CollectionProcessorInterface $collectionProcessor
@@ -107,8 +107,6 @@ class FormRepository implements FormRepositoryInterface
      */
     public function getDataById($id)
     {
-//        $collection=$this->getCollection()->addFieldToFilter('entity_id', $id);
-//        return $collection->getData();
         $model = $this->modelFactory->create();
         $this->resourceModel->load($model, $id);
         return $model;

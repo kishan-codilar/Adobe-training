@@ -15,13 +15,13 @@ use Kishan\Assignment6\Api\Data\FormSearchResultInterfaceFactory;
 class AddressRepository implements AddressRepositoryInterface
 {
     /**
-     * @var FormFactory
+     * @var ModelFactory
      */
-    private $modelFactory;
+    private ModelFactory $modelFactory;
     /**
      * @var CollectionFactory
      */
-    private $collectionFactory;
+    private CollectionFactory $collectionFactory;
     /**
      * @var ResourceModel
      */
@@ -33,7 +33,7 @@ class AddressRepository implements AddressRepositoryInterface
 
     /**
      * AddressRepository constructor.
-     * @param AddressFactory $modelFactory
+     * @param ModelFactory $modelFactory
      * @param CollectionFactory $collectionFactory
      * @param ResourceModel $resourceModel
      * @param CollectionProcessorInterface $collectionProcessor
@@ -73,8 +73,7 @@ class AddressRepository implements AddressRepositoryInterface
      */
     public function getCollection()
     {
-        $collection = $this->collectionFactory->create();
-        return $collection;
+        return $this->collectionFactory->create();
     }
 
     /**
