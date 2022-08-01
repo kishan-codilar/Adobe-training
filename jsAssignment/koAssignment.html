@@ -2,28 +2,30 @@
 <html>
 
 <head>
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    <script  type = "text/javascript" src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"
+        integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <div>
         <span>
             <label>Feild1</label>
-            <input type="number" data-bind="value: feild1">
-        </span><br><br>
+            <input type = "number" data-bind = "value: feild1">
+        </span>
         <span>
             <label>Feild2</label>
-            <input type="number" data-bind="value: feild2">
-        </span><br><br>
+            <input type = "number" data-bind="value: feild2">
+        </span>
         <span>
             <label>Feild3</label>
             <input type="number" data-bind="value: feild3">
-        </span><br><br>
+        </span>
         <button data-bind="click:add">Add</button>
     </div>
 </body>
 <script type="text/javascript">
-        var addition = function () {
+    jQuery(function () {
+        var viewModel = function () {
             this.feild1 = ko.observable("");
             this.feild2 = ko.observable("");
             this.feild3 = ko.observable(0);
@@ -31,8 +33,8 @@
                 this.feild3(Number(this.feild1()) + Number(this.feild2()));
             }
         }
-        // Activates knockout.js
-        ko.applyBindings(new addition());
+       // Activates knockout.js
+        ko.applyBindings(new viewModel());
+    });
 </script>
-
 </html>
