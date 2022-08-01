@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+</head>
+
+<body>
+    <div>
+        <span>
+            <label>Feild1</label>
+            <input type="number" data-bind="value: feild1">
+        </span><br><br>
+        <span>
+            <label>Feild2</label>
+            <input type="number" data-bind="value: feild2">
+        </span><br><br>
+        <span>
+            <label>Feild3</label>
+            <input type="number" data-bind="value: feild3">
+        </span><br><br>
+        <button data-bind="click:add">Add</button>
+    </div>
+</body>
+<script type="text/javascript">
+        var addition = function () {
+            this.feild1 = ko.observable("");
+            this.feild2 = ko.observable("");
+            this.feild3 = ko.observable(0);
+            this.add = function () {
+                this.feild3(Number(this.feild1()) + Number(this.feild2()));
+            }
+        }
+        // Activates knockout.js
+        ko.applyBindings(new addition());
+</script>
+
+</html>
