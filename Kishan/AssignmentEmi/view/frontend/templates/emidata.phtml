@@ -1,0 +1,35 @@
+<?php
+/** @var Magento\Catalog\Block\Product\View $block */
+$viewModel= $block->getData('view_model');
+$data= $viewModel->getConfigValue();
+$customerlog = $viewModel->getCustomerLog();
+$data=(array)json_decode($data, true);
+$data=array_values($data);
+$data=json_encode($data);
+?>
+<?php if ($customerlog) :?>
+<a class="emi-link">Emi Plans</a>
+<table class="emi_table" id="emi_table">
+    <tr>
+        <th>Emi Plans</th>
+        <th>Interest</th>
+        <th>Total Cost</th>
+    </tr>
+</table>
+<?php endif; ?>
+<script type = "text/x-magento-init">
+    {
+    "*": {
+            "Magento_Ui/js/core/app": {
+              "components": {
+               "section": {
+                  "component": "Kishan_AssignmentEmi/js/custom-info",
+                  "templates": "Kishan_AssignmentEmi/emidata",
+                  "price": <?= $block->getProduct()->getPrice()?>,
+                  "emiData": <?= $data?>
+                  }
+               }
+            }
+         }
+    }
+ </script>
